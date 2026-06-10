@@ -1,0 +1,9 @@
+/bin/
+/target/
+*.class
+.settings/
+.classpath
+.project
+.env
+*.key
+config.properties
