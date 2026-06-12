@@ -42,7 +42,10 @@ public class KeystrokeSimulator {
 //			String cuit = "20-29384 - 0";txtp2p
 //			System.out.println(cuit.replaceAll(" ", "").replaceAll("\\-", ""));
 			
-			if (args[0].equals("cbu")) {
+			if (args[0].trim().equals("cred")) {
+				String credentials = SheetsService.getCredentials(args[1].trim());
+				if (credentials != null) typeString(credentials);
+			} else if (args[0].trim().equals("cbu")) {
 				//Preparo los datos de la cuenta
 				prepareBankAccountData(args);
 			} else if(args[0].equals("binance")) {
@@ -92,7 +95,7 @@ public class KeystrokeSimulator {
 				}
 				
 			}
-		} catch (AWTException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}

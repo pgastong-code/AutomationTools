@@ -1,15 +1,17 @@
 package keypresssimulator;
 import java.io.BufferedReader;
-import java.io.FileReader;
+import java.io.FileInputStream;
+import java.io.InputStreamReader;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 
 public class TxtFileReader {
-	
+
     public static String readFile(String fileName) {
-        
+
         StringBuilder text = new StringBuilder();
         try {
-            FileReader fileReader = new FileReader(fileName);
+            InputStreamReader fileReader = new InputStreamReader(new FileInputStream(fileName), StandardCharsets.UTF_8);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             
             String line;
