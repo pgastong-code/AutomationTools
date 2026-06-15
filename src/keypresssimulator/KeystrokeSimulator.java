@@ -83,7 +83,7 @@ public class KeystrokeSimulator {
 				
 				pasteClipboard();
 				
-				if(args[1] != null && args[1].startsWith("pix")) {
+				if(args.length > 1 && args[1].startsWith("pix")) {
 					
 					type(KeyEvent.VK_ENTER);//enter
 					str = new StringSelection(args[1].substring(4));
