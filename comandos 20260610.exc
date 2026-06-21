@@ -863,7 +863,7 @@ param="Oriana Pereyra (Mayorista) 5493755265604"
 keywords=cred
 command=C:\Users\RyzenPablo\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
-param=cred $u$
+param=intra $u$
 
 [W147]
 keywords=mantonini

@@ -863,7 +863,7 @@ param="Oriana Pereyra (Mayorista) 5493755265604"
 keywords=cred
 command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
-param=cred $u$
+param=intra $u$
 
 [W147]
 keywords=mantonini
@@ -1928,13 +1928,13 @@ param="https://www.tradingview.com/chart/?symbol=$U$"
 keywords=intra
 command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
-param=cred $U$
+param=intra $U$
 
 [W403]
 keywords=intrabr
 command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
-param=credbr $U$
+param=intrabr $U$
 
 [W326]
 keywords=rayane
