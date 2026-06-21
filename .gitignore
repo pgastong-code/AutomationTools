@@ -10,3 +10,4 @@ config.properties
 credentials.json
 *.tmp.*
 AutomationTools.jar
+*.exc
