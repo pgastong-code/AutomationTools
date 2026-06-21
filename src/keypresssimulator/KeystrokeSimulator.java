@@ -42,8 +42,11 @@ public class KeystrokeSimulator {
 //			String cuit = "20-29384 - 0";txtp2p
 //			System.out.println(cuit.replaceAll(" ", "").replaceAll("\\-", ""));
 			
-			if (args[0].trim().equals("cred")) {
+			if (args[0].trim().equals("intra")) {
 				String credentials = SheetsService.getCredentials(args[1].trim());
+				if (credentials != null) typeString(credentials);
+			} else if (args[0].trim().equals("intrabr")) {
+				String credentials = SheetsService.getCredentialsBR(args[1].trim());
 				if (credentials != null) typeString(credentials);
 			} else if (args[0].trim().equals("cbu")) {
 				//Preparo los datos de la cuenta

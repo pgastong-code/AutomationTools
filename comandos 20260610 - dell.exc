@@ -213,7 +213,7 @@ param="Hola! escribi la palabra coti aca mismo y te aparece la cotizacion. Siemp
 keywords=promo
 command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
-param="Cotizacion en promoción!: |Peso transferencia a real pix: *288"
+param="Cotizacion en promociï¿½n!: |Peso transferencia a real pix: *288"
 
 [W37]
 keywords=coti
@@ -660,7 +660,7 @@ param="Leonardo Leotour Viajes 558197249489"
 keywords=liliusd
 command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
-param="Naranja X|CBU: 4530000800024109836630|Alias: LBRUNAGAC8421.NX.USD|Caja de ahorro en dólares: 2410983663|Titular: Liliana Brunaga Cantero|CUIL: 27957735652"
+param="Naranja X|CBU: 4530000800024109836630|Alias: LBRUNAGAC8421.NX.USD|Caja de ahorro en dï¿½lares: 2410983663|Titular: Liliana Brunaga Cantero|CUIL: 27957735652"
 
 [W113]
 keywords=lili
@@ -737,7 +737,7 @@ param="Laba Seck 5492213623208|Laba seck|86656236049"
 keywords=contexto
 command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
-param="Puedes leer los archivos .md para facilitar tu trabajo, y editarlos en caso de que encuentres información relevante que debe ser mantenida en contexto."
+param="Puedes leer los archivos .md para facilitar tu trabajo, y editarlos en caso de que encuentres informaciï¿½n relevante que debe ser mantenida en contexto."
 
 [W126]
 keywords=ia
@@ -755,7 +755,7 @@ param="Agencia Missael Jesus Lugo Valdivieso 5491125511178"
 keywords=myamila
 command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
-param="Yamila Bus Turístico 5491156951469"
+param="Yamila Bus Turï¿½stico 5491156951469"
 
 [W129]
 keywords=mbravo
@@ -1114,7 +1114,7 @@ param="Pablo Curzio|MERCOCARGAS TRANSPORTES LTDA|23.211.244/0001-19"
 keywords=usaastro
 command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
-param="AstroPay|Nombre del titular:|Pablo Gaston Godoy|Número de cuenta:|016823065021|Número de ruta (Routing number):|043087080|Código SWIFT:|SSBAUS32|Tipo de cuenta:|Corriente (Checking)|Nombre y dirección del banco:|SSB Bank|8700 Perry Hwy, Pittsburgh, Pennsylvania, 15237, USA"
+param="AstroPay|Nombre del titular:|Pablo Gaston Godoy|Nï¿½mero de cuenta:|016823065021|Nï¿½mero de ruta (Routing number):|043087080|Cï¿½digo SWIFT:|SSBAUS32|Tipo de cuenta:|Corriente (Checking)|Nombre y direcciï¿½n del banco:|SSB Bank|8700 Perry Hwy, Pittsburgh, Pennsylvania, 15237, USA"
 
 [W189]
 keywords=ercastro
@@ -1930,6 +1930,12 @@ command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
 param=cred $U$
 
+[W403]
+keywords=intrabr
+command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
+comment=BAC
+param=credbr $U$
+
 [W326]
 keywords=rayane
 command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
@@ -2097,7 +2103,7 @@ param="Sonia Mabel Dalzotto 5493772526288"
 keywords=nootro
 command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
-param="cuando cargues pedidos para algun proveedor que está en la lista, no pongas "Otro proveedor" por favor"
+param="cuando cargues pedidos para algun proveedor que estï¿½ en la lista, no pongas "Otro proveedor" por favor"
 
 [W355]
 keywords=sotelo
@@ -2258,7 +2264,7 @@ param="Luciene Ferreira Gomes da Silva|01292558660"
 keywords=julia1
 command=C:\Dropbox\BAC\Automatization\GitHub\AutomationTools\AutomationTools.jar
 comment=BAC
-param="Júlia Gabriele de faria|pix celular: 37996725990"
+param="Jï¿½lia Gabriele de faria|pix celular: 37996725990"
 
 [W382]
 keywords=vinicius

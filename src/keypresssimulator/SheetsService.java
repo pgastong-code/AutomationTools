@@ -21,6 +21,7 @@ public class SheetsService {
 
     private static final String SPREADSHEET_ID = "1TLk87QGR8T_IYI4YnRNojKOtxT71vVVFleXgDHJfgqc";
     private static final String SHEET_NAME = "ar_customers";
+    private static final String SHEET_NAME_BR = "customers";
     private static final String CREDENTIALS_FILE = "credentials.json";
     private static final String TOKEN_URL = "https://oauth2.googleapis.com/token";
     private static final String SCOPE = "https://www.googleapis.com/auth/spreadsheets";
@@ -68,10 +69,9 @@ public class SheetsService {
                     return "ya tiene usuario creado";
                 }
                 String result = "https://bac-financial.com/\n"
-                        + "Tu usuario: " + columnB + "\n"
-                        + "Tu contraseña temporal:  " + password;
+                        + "Seu usuario: " + columnB + "\n"
+                        + "A sua senha temporal:  " + password + "(maiúscula)";
                 System.out.println("Resultado:\n" + result);
-                updateLoginRecord(accessToken, i + 1);
                 return result;
             }
         }
@@ -80,31 +80,82 @@ public class SheetsService {
         return null;
     }
 
-    private static void updateLoginRecord(String accessToken, int rowNumber) throws Exception {
-        java.time.LocalDate today = java.time.LocalDate.now();
-        String dateStr = today.getDayOfMonth() + "/" + today.getMonthValue() + "/" + today.getYear();
+    /**
+     * Busca el valor ingresado como sufijo de la columna "id" de customers (BAC_DB) y
+     * devuelve las credenciales formateadas. El usuario es el teléfono (últimos dígitos
+     * del id) y la contraseña se lee de la columna "password".
+     */
+    public static String getCredentialsBR(String searchValue) throws Exception {
+        String credJson = new String(Files.readAllBytes(Paths.get(CREDENTIALS_FILE)), StandardCharsets.UTF_8);
+        String clientEmail = extractJsonString(credJson, "client_email");
+        String privateKeyPem = extractJsonString(credJson, "private_key");
 
-        String range = SHEET_NAME + "!I" + rowNumber + ":J" + rowNumber;
+        String accessToken = getAccessToken(clientEmail, privateKeyPem);
+
         String url = "https://sheets.googleapis.com/v4/spreadsheets/" + SPREADSHEET_ID
-                + "/values/" + range.replace(" ", "%20")
-                + "?valueInputOption=USER_ENTERED";
-
-        String body = "{\"range\":\"" + range + "\",\"values\":[[\"" + dateStr + "\",\"0\"]]}";
+                + "/values/" + SHEET_NAME_BR.replace(" ", "%20");
 
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(url))
                 .header("Authorization", "Bearer " + accessToken)
-                .header("Content-Type", "application/json")
-                .PUT(HttpRequest.BodyPublishers.ofString(body))
+                .GET()
                 .build();
 
-        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+        HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString(StandardCharsets.UTF_8));
+
         if (response.statusCode() != 200) {
-            System.err.println("Error al actualizar fila " + rowNumber + ": " + response.statusCode() + " - " + response.body());
-        } else {
-            System.out.println("Fila " + rowNumber + " actualizada: fecha=" + dateStr + ", J=0");
+            System.err.println("Error HTTP " + response.statusCode() + ": " + response.body());
+            throw new IOException("Error al consultar Sheets: HTTP " + response.statusCode());
         }
+
+        List<List<String>> rows = parseSheetValues(response.body());
+        if (rows.isEmpty()) {
+            System.err.println("La hoja " + SHEET_NAME_BR + " está vacía.");
+            return null;
+        }
+
+        List<String> header = rows.get(0);
+        int idCol = indexOfHeader(header, "id");
+        int passwordCol = indexOfHeader(header, "password");
+        if (idCol == -1 || passwordCol == -1) {
+            throw new IOException("No se encontraron las columnas 'id' y/o 'password' en " + SHEET_NAME_BR);
+        }
+
+        String search = searchValue.trim();
+        for (int i = 1; i < rows.size(); i++) {
+            List<String> row = rows.get(i);
+            if (row.size() <= idCol) continue;
+            String idValue = row.get(idCol).trim();
+            if (idValue.endsWith(search)) {
+                String password = row.size() > passwordCol ? row.get(passwordCol).trim().toUpperCase() : "";
+                if (password.matches("\\d{6}")) {
+                    System.out.println("Contraseña de 6 dígitos detectada, usuario ya creado.");
+                    return "ya tiene usuario creado";
+                }
+                String phone = extractTrailingDigits(idValue);
+                String result = "https://bac-financial.com/br/\n"
+                        + "Tu usuario: " + phone + "\n"
+                        + "Tu contraseña temporal:  " + password + "(mayúscula)"; ;
+                System.out.println("Resultado:\n" + result);
+                return result;
+            }
+        }
+
+        System.err.println("No se encontró: " + searchValue);
+        return null;
+    }
+
+    private static int indexOfHeader(List<String> header, String name) {
+        for (int i = 0; i < header.size(); i++) {
+            if (header.get(i).trim().equalsIgnoreCase(name)) return i;
+        }
+        return -1;
+    }
+
+    private static String extractTrailingDigits(String value) {
+        java.util.regex.Matcher matcher = java.util.regex.Pattern.compile("(\\d+)$").matcher(value);
+        return matcher.find() ? matcher.group(1) : value;
     }
 
     private static String getAccessToken(String clientEmail, String privateKeyPem) throws Exception {
