@@ -69,8 +69,8 @@ public class SheetsService {
                     return "ya tiene usuario creado";
                 }
                 String result = "https://bac-financial.com/\n"
-                        + "Seu usuario: " + columnB + "\n"
-                        + "A sua senha temporal:  " + password + "(maiúscula)";
+                        + "Tu usuario: " + columnB + "\n"
+                        + "Tu contraseña temporal:  " + password + " (Mayúscula)";
                 System.out.println("Resultado:\n" + result);
                 return result;
             }
@@ -135,8 +135,8 @@ public class SheetsService {
                 }
                 String phone = extractTrailingDigits(idValue);
                 String result = "https://bac-financial.com/br/\n"
-                        + "Tu usuario: " + phone + "\n"
-                        + "Tu contraseña temporal:  " + password + "(mayúscula)"; ;
+                        + "Seu usuario: " + phone + "\n"
+                        + "Sua senha temporal: " + password + " (Maiúscula)";
                 System.out.println("Resultado:\n" + result);
                 return result;
             }

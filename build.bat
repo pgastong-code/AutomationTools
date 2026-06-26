@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-set JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot
+set JAVA_HOME=C:\Program Files\Java\jdk-19
 set SRC=src\keypresssimulator
 set BIN=bin
 set LIB=lib\gson-2.10.1.jar
