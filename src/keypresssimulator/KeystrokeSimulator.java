@@ -31,6 +31,7 @@ public class KeystrokeSimulator {
 //			args[1] = "-15978,34	-10658,03	3831,67			1366,00	5000,00	-4536,00";
 
 			robot = new Robot();
+			robot.setAutoWaitForIdle(true);
 			
 //			cliptboard:
 //Banco Naranja X|Titular: Gabriel Meira de Lamanche Assis|Cuenta  |CBU: 4530000800017271360090|Alias: GMEIRADELAMAN.NX.ARS|CUIL: 20962047069	46200

@@ -1,7 +1,7 @@
 @echo off
 setlocal
 
-set JAVA_HOME=C:\Program Files\Java\jdk-19
+set JAVA_HOME=C:\Program Files\Eclipse Adoptium\jdk-21.0.11.10-hotspot
 set SRC=src\keypresssimulator
 set BIN=bin
 set LIB=lib\gson-2.10.1.jar
@@ -13,7 +13,7 @@ if exist %BIN% rmdir /s /q %BIN%
 mkdir %BIN%
 
 echo [2/4] Compilando...
-"%JAVA_HOME%\bin\javac" --release 17 -encoding UTF-8 -cp "%LIB%" -d %BIN% %SRC%\*.java
+"%JAVA_HOME%\bin\javac" --release 21 -encoding UTF-8 -cp "%LIB%" -d %BIN% %SRC%\*.java
 if errorlevel 1 ( echo ERROR: fallo la compilacion & exit /b 1 )
 
 echo [3/4] Extrayendo dependencias...
